@@ -21,7 +21,9 @@ public class Merge{
     }
     mergesort(left, lo, lo + left.length-1);
     mergesort(right, lo + left.length, hi);
-
+    int lindex = 0;
+    int rindex = 0;
+    
     //System.out.println(Arrays.toString(left));
     //System.out.println(Arrays.toString(right));
   }
