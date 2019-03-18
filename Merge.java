@@ -8,7 +8,7 @@ public class Merge{
 
   public static void mergesort(int[] data, int lo, int hi) {
     if (lo >= hi) {
-      System.out.println(Arrays.toString(data));
+      //System.out.println(Arrays.toString(data));
       return;
     }
     int[] left = new int[(hi-lo+1)/2 + (hi-lo+1)%2];
@@ -23,14 +23,47 @@ public class Merge{
     mergesort(right, lo + left.length, hi);
     int lindex = 0;
     int rindex = 0;
-    
+    int index = 0;
+    while (lindex < left.length && rindex < right.length) {
+      if (left[lindex] <= right[rindex]) {
+        data[index] = left[lindex];
+        lindex++;
+      }
+      else {
+        data[index] = right[rindex];
+        rindex++;
+      }
+      index++;
+    }
+    while (lindex < left.length) {
+      data[index] = left[lindex];
+      lindex++;
+      index++;
+    }
+    while(rindex < right.length) {
+      data[index] = right[rindex];
+      rindex++;
+      index++;
+    }
     //System.out.println(Arrays.toString(left));
     //System.out.println(Arrays.toString(right));
   }
 
   public static void main(String[] args) {
-    int[] ary = new int[] {1,3,4,5,11,4,4};
-    System.out.println(Arrays.toString(ary));
+    Random random = new Random();
+
+    int[] ary = new int[100000];
+    for (int i = 0; i < 10000; i++) {
+      ary[i] = random.nextInt() % 10000;
+    }
     mergesort(ary);
+    boolean yes = true;
+    for (int i = 0; i < 9999; i++) {
+      if (ary[i] > ary[i+1]) {
+        yes = false;
+      }
+    }
+    System.out.println(Arrays.toString(ary));
+    System.out.println(yes);
   }
 }
