@@ -7,11 +7,12 @@ public class Merge{
   }
 
   public static void mergesort(int[] data, int lo, int hi) {
+    System.out.println(Arrays.toString(data));
     /*if (lo >= hi) {
       //System.out.println(Arrays.toString(data));
       return;
     }*/
-    if (hi - lo < 15) {
+    if (hi - lo < 10) {
       for (int i = lo + 1; i < hi - lo + 1; i++) {
         int j = i;
         while (j > lo && data[j] < data[j-1]) {
